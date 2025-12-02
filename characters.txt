@@ -1,0 +1,6 @@
+ScientistName|Experience|Accuracy|Efficiency|Insight|DiscoveryPoints
+Dr.Larry|5|500|500|1000|20000
+Dr.Helixefer|8|900|600|600|20000
+Dr.Panda|12|900|700|500|20000
+Dr.Adenine|7|600|500|900|20000
+Dr.K|18|1000|500|500|20000

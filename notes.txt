@@ -1,0 +1,66 @@
+1. display all characters and their stats 
+NO BACKWARD MOVES!
+2. prompt to enter name > Player 1 and Player 2
+
+TO DO: stuff for player 2 ////////////////////////////////////
+
+3. choose scientist character from characters.txt 
+they have personal attributes > Ex, A, Ef, I, DPs
+They can be chosen only once, update Menu if so 
+
+Experience = 
+Accuracy = const 100+ 
+Efficiency = const 100+
+Insight = const 100+
+DPs = start with 20,000
+
+4. choose path type > label paths TO DO /////////////////////////
+
+CREATE FUNCTION FOR DPs /////////////////////////////
+
+Training = -5000 DPs, increase A+=500; Ef+=500; I+=1000
+all before game starts 
+then chose an advisor > make txt file > have special powers 
+on the path
+QS> can we reduce the number of advisors
+
+Direct = +5000 DPs, A+=200, Ef+=200, I+=200
+more challenges in path
+
+both paths have diff arrangement of tiles > randomise tile arrangement
+QS> ISN'T THIS ALREADY DONE IN Board.cpp ???? //////////////////////////////
+
+6. always display Main Menu, and relevant options for player
+
+7. Create random Dice for alternating turns = done in board.cpp under public members //////////
+
+
+8. Involve riddles as the challenges > purple tiles 
+
+9. Main Menu: 
+    1) Player Progress - (a)DPs (b)Trait stats
+    2) character name and Ex 
+    3) check position - display board //do we really need it?
+    4) review advisor - if yes, use ability for challenge
+    5) move forward 
+
+STRANDS ARE VECTORS 
+
+for the first four colors - THESE HAVE been defined in dna.cpp file
+should i put it in Tile.h ?? What to put there? 
+
+10. Blue tile - similarity score = total matches/total positions 
+
+11. Pink - similarity but unequal length =  > have to find out how to overlap 
+
+12. Red - mutation - three goals - 
+identify substitution, insertion (extra), deletion
+
+13. Brown - replace every 'T' with 'U' (thymine, uracil)
+
+14. random_events.txt for the green tiles
+
+15. When players reach orange tile - 
+1) calculate total DPs
+2) for every 100 in A, Ef, I > add 1000 DPs to the total DPs
+3) display winner > "Player 1/2 is the Lead Genomicist"
