@@ -8,10 +8,6 @@ using namespace std;
 int main() {
     Board d;
     d.displayBoard();
-    //gameBoard.movePlayer(0); // Move player 1
-    //gameBoard.displayBoard();
-    //gameBoard.movePlayer(1); // Move player 2
-    //gameBoard.displayBoard();
 
     cout << "Welcome to, 'CAN YOU BECOME THE LEAD GENOMICIST?'" << endl;
     cout << "Let's see if YOU have the WITS to become the Lead Genomicist of the World :)"<<endl;
@@ -59,22 +55,21 @@ int main() {
     cout << "Player 2, enter your name: "; cin>>name2;
     cout<< "Great "<<name2<<"! You are our first scientist \n";
     cout<<"Just like "<<name1<<", "<<name2<<", chose a character!"; cin>>selected_scientist2;
-    //display list again but, remove the character name selected
-    //we can copy vector for player 1 but, remove the character selected
-    //or just .erase selected_scientist and display vector again 
-//if line != selected_scientist > print 
-//copy, paste into new vector > erase 
-//give number instead
 
-//store in new vector? 
+    //copy original vector into character_names2, but remove selected_scientist using erase 
 
-    if(character_names(i_names)==selected_scientist){
-      character_names.erase(character_names());
-      
+    vector <string> character_names2;
+    character_names2 = character_names;
+    
+    for (int i = 0; i < character_names2.size(); i++) {
+        if (character_names2[i] == selected_scientist) {
+            character_names2.erase(character_names2.begin() + i);
+            break;
+        }
     }
 
-    for ( i_names= 0; character_names.size(); i_names++){
-        cout<<character_names[i_names]<<endl;
+    for ( i_names= 0; i_names < character_names2.size(); i_names++){
+        cout<<character_names2[i_names]<<endl;
     }
     
 //========================== CHOOSE PATH TYPE ================================================
@@ -104,7 +99,7 @@ int main() {
     //Do we need to create 3 instances of the board then? 
     //one where both are trained, both jumper, one trained and one jumper?
     //ASSUMING THAT PLAYER 1 IS TRAINED AND PLAYER 2 IS JUMPER
-    //copied from displayBoard.cpp
+   
     Board gameBoard;            
     gameBoard.displayBoard();
     gameBoard.movePlayer(0); // Move player 1
