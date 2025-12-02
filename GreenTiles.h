@@ -2,6 +2,7 @@
 #include "Board.h"
 #include <vector>
 #include <fstream>
+#include <string>
 //#include "Tile.h"
 using namespace std;
 
@@ -9,6 +10,10 @@ class GreenTiles
 {
     private:
         Board board;
+        vector<string> events;
+        vector<string> greenTileDescriptions;
+        vector<int> pathType;
+        vector<int> points;
     public:
         GreenTiles()
         {
@@ -31,10 +36,8 @@ class GreenTiles
         {
             board.movePlayer(player_index);
         }
-        void randomEvents(fstream &file)
+        void setRandomEvents(fstream &file)
         {
-            vector<string> events;
-
             file.open("random_events.txt");
             if(file.fail())
             {
@@ -46,7 +49,11 @@ class GreenTiles
             {
                 events.push_back(line);
             }
-
-            //int num 
+        }
+        void triggerRandomEvent(int player_index)
+        {
+            int num = events.size();
+            int randomIndex = rand() % num;
+            cout << "Random Event: " << events[randomIndex] << endl;
         }
 };
