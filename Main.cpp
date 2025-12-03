@@ -24,6 +24,8 @@ int main() {
     board.displayBoard(); 
     green.updateBoardAfterMove(0);
     green.displayGreenTiles();
+    green.setRandomEvents("random_events.txt");
+    green.triggerRandomEvent(0);
     
     return 0;
 }

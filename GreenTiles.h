@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <sstream>
 //#include "Tile.h"
 using namespace std;
 
@@ -36,24 +37,40 @@ class GreenTiles
         {
             board.movePlayer(player_index);
         }
-        void setRandomEvents(fstream &file)
+        void setRandomEvents(string filename)
         {
-            file.open("random_events.txt");
+            ifstream file(filename);
+            //file.open("random_events.txt");
+            string line;
+            int i = 0;
+
             if(file.fail())
             {
                 cout << "oopsie" << endl;
                 return;
             }
-            string line;
             while (getline(file, line))
             {
-                events.push_back(line);
+                stringstream ss;
+                string pathTypeStr, pointsStr;
+
+                getline(ss, greenTileDescriptions[i], '|');
+
+                getline(ss, pathTypeStr, '|');
+                pathType.push_back(stoi(pathTypeStr));
+
+                getline(ss, pointsStr, '|');
+                points.push_back(stoi(pointsStr));
+
+                //events.push_back(line);
+
+                i++;
             }
         }
         void triggerRandomEvent(int player_index)
         {
             int num = events.size();
             int randomIndex = rand() % num;
-            cout << "Random Event: " << events[randomIndex] << endl;
+            cout << "Random Event: " << greenTileDescriptions[randomIndex] << "," << pathType[randomIndex] << "," << points[randomIndex] << endl;
         }
 };
