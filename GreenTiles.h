@@ -1,9 +1,11 @@
 #include <iostream>
 #include "Board.h"
+#include "Player.h"
 #include <vector>
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <ctime>
 //#include "Tile.h"
 using namespace std;
 
@@ -14,6 +16,7 @@ class GreenTiles
         vector<string> events;
         vector<string> greenTileDescriptions;
         vector<int> pathType;
+        vector<int> advisor;
         vector<int> points;
     public:
         GreenTiles()
@@ -52,25 +55,44 @@ class GreenTiles
             while (getline(file, line))
             {
                 stringstream ss;
-                string pathTypeStr, pointsStr;
 
-                getline(ss, greenTileDescriptions[i], '|');
+                ss << line;
+
+                string pathTypeStr, pointsStr, description, advisorStr;
+
+                getline(ss, description, '|');
+                greenTileDescriptions.push_back(description);
 
                 getline(ss, pathTypeStr, '|');
                 pathType.push_back(stoi(pathTypeStr));
 
+                getline(ss, advisorStr, '|');
+                advisor.push_back(stoi(advisorStr));
+
                 getline(ss, pointsStr, '|');
                 points.push_back(stoi(pointsStr));
 
-                //events.push_back(line);
+                events.push_back(line);
+
+                //cout << events.size() << " " << greenTileDescriptions.size() << " " << pathType.size() << " " << advisor.size() << " " << points.size() << endl;
 
                 i++;
             }
         }
-        void triggerRandomEvent(int player_index)
+        void triggerRandomEvent(int player_index, Player player)
         {
             int num = events.size();
+            //cout << events.size() << " " << greenTileDescriptions.size() << " " << pathType.size() << " " << advisor.size() << " " << points.size() << endl;
             int randomIndex = rand() % num;
-            cout << "Random Event: " << greenTileDescriptions[randomIndex] << "," << pathType[randomIndex] << "," << points[randomIndex] << endl;
+            cout << "Random Event: " << greenTileDescriptions[randomIndex] << "," << advisor[randomIndex] << "," << pathType[randomIndex] << "," << points[randomIndex] << endl;
+            if(points[randomIndex] < 0)
+            {
+                cout << "Player " << player_index + 1 << " lost " << -points[randomIndex] << " experience points!" << endl;
+            }
+            else
+            {
+                cout << "Player " << player_index + 1 << " gained " << points[randomIndex] << " experience points!" << endl;
+            }
+            player.addExperiencePoints(points[randomIndex]);
         }
 };
