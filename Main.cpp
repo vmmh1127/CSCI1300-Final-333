@@ -15,9 +15,12 @@ int main() {
     
     srand(time(0)); // Seed for random number generation
 
+    Player player1 = Player();
+    Player player2 = Player();
+
     StartPage start;
     start.setUpCharacters("characters.txt");
-    start.displayMenu();
+    start.displayMenu(player1, player2);
 
     GreenTiles green;
     green.displayGreenTiles();
@@ -26,9 +29,6 @@ int main() {
 
     Board board = Board();
     board.displayBoard();
-
-    Player player1 = Player();
-    Player player2 = Player();
 
     cout<< "\n" << endl;
 

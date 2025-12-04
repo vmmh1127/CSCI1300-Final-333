@@ -56,5 +56,8 @@ class Player {
         int getEfficiencyPoints();
         int getInsightPoints();
         int getDiscoverPoints();
+        string getName() {
+            return name;
+        }
 };
 

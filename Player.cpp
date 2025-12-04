@@ -53,4 +53,5 @@ Player::Player(){
             return discover_points;
         }
         
+        
 // TO DO: Integrate Player class into the main game loop to update stats based on tile events

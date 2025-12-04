@@ -12,6 +12,7 @@ class StartPage
 
     int choice;
     Player player;
+    Player player2;
     vector<string> name;
     vector<int> experience;
     vector<int> accuracy;
@@ -63,11 +64,13 @@ class StartPage
             i++;
         }
     }
-    void displayMenu()
+    void displayMenu(Player p1, Player p2)
     {
+        player = p1;
+        player2 = p2;
         cout << "~Journey Through the Geneome~" << endl;
 
-        cout << "Choose your character:" << endl;
+        cout << "Player 1, Choose your character:" << endl;
         for (int i = 0; i < name.size(); i++)
         {
             cout << i + 1 << ") " << name[i] << " | Experience: " << experience[i] << " | Accuracy: " << accuracy[i] << " | Efficiency: " << efficiency[i] << " | Insight: " << insight[i] << " | Discovery Points: " << discoveryPoints[i] << endl;
@@ -79,6 +82,33 @@ class StartPage
         player.setEfficiency(efficiency[choice - 1]);
         player.setInsight(insight[choice - 1]);
         player.setDiscoverPoints(discoveryPoints[choice - 1]);
+
+        cout << "You have chosen: " << player.getName() << endl;
+        
+        //erase chosen character from vectors to prevent player 2 from choosing same character
+        name.erase(name.begin() + (choice - 1));
+        experience.erase(experience.begin() + (choice - 1));
+        accuracy.erase(accuracy.begin() + (choice - 1));
+        efficiency.erase(efficiency.begin() + (choice - 1));
+        insight.erase(insight.begin() + (choice - 1));
+        discoveryPoints.erase(discoveryPoints.begin() + (choice - 1));
+
+        cin.clear();
+
+        cout << "Player 2, Choose your character:" << endl;
+        for (int i = 0; i < name.size(); i++)
+        {
+            cout << i + 1 << ") " << name[i] << " | Experience: " << experience[i] << " | Accuracy: " << accuracy[i] << " | Efficiency: " << efficiency[i] << " | Insight: " << insight[i] << " | Discovery Points: " << discoveryPoints[i] << endl;
+        }
+        cin >> choice;
+        player2.setName(name[choice - 1]);
+        player2.setExperience(experience[choice - 1]);
+        player2.setAccuracy(accuracy[choice - 1]);
+        player2.setEfficiency(efficiency[choice - 1]);
+        player2.setInsight(insight[choice - 1]);
+        player2.setDiscoverPoints(discoveryPoints[choice - 1]);
+
+        cout << "You have chosen: " << player2.getName() << endl;
 
         /*cout << "Choose your adventure!" << endl;
         cout << "1) Start the study" << endl;
