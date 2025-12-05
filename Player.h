@@ -9,11 +9,13 @@ events. */
 class Player {
     private:
         string name;
+        string playerName;
         int experience_points;
         int accuracy_points;
         int efficiency_points;
         int insight_points;
         int discover_points;
+        int pathChoice;
 
     public:
         // Constructor to initialize player stats
@@ -49,6 +51,12 @@ class Player {
         void setDiscoverPoints(int disc) {
             discover_points = disc;
         }
+        void setPathChoice(int choice) {
+            pathChoice = choice;
+        }
+        void setPlayerName(string pName) {
+            playerName = pName;
+        }
 
         // Methods to get current stats
         int getExperiencePoints();
@@ -56,8 +64,8 @@ class Player {
         int getEfficiencyPoints();
         int getInsightPoints();
         int getDiscoverPoints();
-        string getName() {
-            return name;
-        }
+        string getName();
+        int getPathChoice();
+        string getPlayerName();
 };
 

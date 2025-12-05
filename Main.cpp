@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "StartPage.h"
 #include "GreenTiles.h"
+#include "DNA.h"
 
 
 using namespace std;
@@ -20,29 +21,54 @@ int main() {
 
     StartPage start;
     start.setUpCharacters("characters.txt");
-    start.displayMenu(player1, player2);
+    start.namesStartPage(player1.getPlayerName(), player2.getPlayerName());
+    start.displayMenu();
+    start.path_type();
 
     GreenTiles green;
+    //green.nameGreenTiles(player1.getName());
     green.displayGreenTiles();
 
     cout<< "\n" << endl;
 
     Board board = Board();
-    board.displayBoard();
+    //board.displayBoard();
+
+    int turn = 0;
 
     cout<< "\n" << endl;
 
-    board.movePlayer(0);
-    board.displayBoard(); 
+    while(board.getPlayerPosition(0) < 51 && board.getPlayerPosition(1) < 51){
 
-    green.updateBoardAfterMove(0);
-    green.displayGreenTiles();
+        int current = turn % 2;
+        board.movePlayer(current);
+        board.displayBoard();
+
+        if (board.getTileColor(current) == 'G')
+        {
+            green.triggerRandomEvent();
+        }
+
+        turn++;
+    }
+    cout << "\n" << "=====================================================================================" << "\n" << endl;
+   //board.movePlayer(0);
+    //board.displayBoard(); 
+
+    /*green.updateBoardAfterMove(0);
+    green.displayGreenTiles();*/
     green.setRandomEvents("random_events.txt");
 
-    cout << "Loaded events successfully" << endl;
+    green.triggerRandomEvent();
+    green.triggerRandomEvent();
 
-    green.triggerRandomEvent(0, player1);
-    green.triggerRandomEvent(0, player2);
-    
+    cout << "\n" << "=====================================================================================" << "\n" << endl;
+
+    DNA dna;
+    dna.generate_two_strands(10, 6);
+    dna.strandSimilarity("ATCGTACGTA", "ATCGTTCG");
+    //dna.bestStrandMatch("ATCGTACGTA", "CGTACG");
+    //dna.identifyMutations("ATCGTACGTA", "CGTACG");
+    //string rna_strand = dna.transcribeToRNA("ATCGTACGTA");
     return 0;
 }

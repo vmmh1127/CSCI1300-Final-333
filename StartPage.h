@@ -19,11 +19,18 @@ class StartPage
     vector<int> efficiency;
     vector<int> insight;
     vector<int> discoveryPoints;
+    int pathChoice0;
+    int pathChoice1;
 
     public:
     StartPage()
     {
         choice = 0;
+    }
+    void namesStartPage(string p1Name, string p2Name)
+    {
+        player.setPlayerName(p1Name);
+        player2.setPlayerName(p2Name);
     }
     void setUpCharacters(string filename)
     {
@@ -64,13 +71,24 @@ class StartPage
             i++;
         }
     }
-    void displayMenu(Player p1, Player p2)
+    void displayMenu()
     {
-        player = p1;
-        player2 = p2;
-        cout << "~Journey Through the Geneome~" << endl;
+        string playerName1;
+        string playerName2;
+        cout << "Welcome to, 'JOURNEY OF THE GENOMICIST'" << endl;
+        cout << "Let's see if YOU have the WITS to become the Lead Genomicist of the World :)"<<endl;
+        cout <<"PLayer 1, enter the phrase by thy which you art called by the mortals:"<<endl; 
+        cin>>playerName1;
+        player.setPlayerName(playerName1);
 
-        cout << "Player 1, Choose your character:" << endl;
+        cin.clear();
+
+        cout << "PLayer 2 gimmie ur name: " << endl;
+        cin>>playerName2;
+        player2.setPlayerName(playerName2);
+        cin.clear();
+
+        cout << player.getPlayerName() << ", Choose your character:" << endl;
         for (int i = 0; i < name.size(); i++)
         {
             cout << i + 1 << ") " << name[i] << " | Experience: " << experience[i] << " | Accuracy: " << accuracy[i] << " | Efficiency: " << efficiency[i] << " | Insight: " << insight[i] << " | Discovery Points: " << discoveryPoints[i] << endl;
@@ -84,7 +102,7 @@ class StartPage
         player.setDiscoverPoints(discoveryPoints[choice - 1]);
 
         cout << "You have chosen: " << player.getName() << endl;
-        
+
         //erase chosen character from vectors to prevent player 2 from choosing same character
         name.erase(name.begin() + (choice - 1));
         experience.erase(experience.begin() + (choice - 1));
@@ -95,7 +113,7 @@ class StartPage
 
         cin.clear();
 
-        cout << "Player 2, Choose your character:" << endl;
+        cout << player2.getPlayerName() << ", Choose your character:" << endl;
         for (int i = 0; i < name.size(); i++)
         {
             cout << i + 1 << ") " << name[i] << " | Experience: " << experience[i] << " | Accuracy: " << accuracy[i] << " | Efficiency: " << efficiency[i] << " | Insight: " << insight[i] << " | Discovery Points: " << discoveryPoints[i] << endl;
@@ -110,27 +128,52 @@ class StartPage
 
         cout << "You have chosen: " << player2.getName() << endl;
 
-        /*cout << "Choose your adventure!" << endl;
-        cout << "1) Start the study" << endl;
-        cout << "2) Go through training" << endl;
-        cin >> choice;
+    }
+    //========================== CHOOSE PATH TYPE ================================================
+    void path_type(){
+        int path_choice;
+        cout<<"Player 1, Choose your path type: (Enter 0 or 1)\n";
+        cout<<"'THE TRAINED' or jump directly into the game with 'THE JUMPER' path"<<endl;
+        cout<<"0) THE TRAINED - path means you receive some training (at a cost!) with a handy-dandy ADVISOR \n";
+        cout<<"1) THE JUMPER - jump directly onto your journey (P.S. it will be harder for you \n HEHEHEHEHHE) "<<endl;
+        cin>>path_choice;
+        player.setPathChoice(path_choice);
 
-        switch (choice)
+        switch (path_choice)
         {
-        case 1:
-            int character;
-            cout << "Starting the study..." << endl;
-            cout << "Pick your player: " << endl;
-            cout << "1) DNA Double Helix" << endl;
-            cout << "2) RNA Strand" << endl;
-            cin >> character;
+        case 0:
+            cout<<"You have chosen THE TRAINED path! An advisor will be with you throughout your journey. \n";
             break;
-        case 2:
-            cout << "Going through training..." << endl;
+        case 1:
+            cout<<"You have chosen THE JUMPER path! Good luck out there! \n";
             break;
         default:
-            cout << "Invalid choice." << endl;
+            cout<<"Invalid choice. Please enter 0 or 1. \n";
+            cin>>path_choice;
             break;
-        }*/
+        }
+
+        cin.clear();
+
+        cout<<"Player 2, Choose your path type: (Enter 0 or 1)\n";
+        cout<<"'THE TRAINED' or jump directly into the game with 'THE JUMPER' path"<<endl;
+        cout<<"0) THE TRAINED - path means you receive some training (at a cost!) with a handy-dandy ADVISOR \n";
+        cout<<"1) THE JUMPER - jump directly onto your journey (P.S. it will be harder for you \n HEHEHEHEHHE) "<<endl;
+        cin>>path_choice;
+        player2.setPathChoice(path_choice);
+
+        switch (path_choice)
+        {
+        case 0:
+            cout<<"You have chosen THE TRAINED path! An advisor will be with you throughout your journey. \n";
+            break;
+        case 1:
+            cout<<"You have chosen THE JUMPER path! Good luck out there! \n";
+            break;
+        default:
+            cout<<"Invalid choice. Please enter 0 or 1. \n";
+            cin>>path_choice;
+            break;
+        }
     }
 };

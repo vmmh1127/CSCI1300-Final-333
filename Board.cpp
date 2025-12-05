@@ -168,3 +168,10 @@ int Board::getPlayerPosition(int player_index) const {
     }
     return -1;
 }
+char Board::getTileColor(int player_index) const {
+    int pos = getPlayerPosition(player_index);
+    if (pos >= 0 && pos < _BOARD_SIZE) {
+        return _tiles[player_index][pos].color;
+    }
+    return '\0'; // Return null character if position is invalid
+}

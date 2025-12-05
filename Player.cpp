@@ -52,6 +52,18 @@ Player::Player(){
         {
             return discover_points;
         }
+        string Player::getName()
+        {
+            return name;
+        }
+        int Player::getPathChoice()
+        {
+            return pathChoice;
+        }
+        string Player::getPlayerName()
+        {
+            return playerName;
+        }
         
         
 // TO DO: Integrate Player class into the main game loop to update stats based on tile events

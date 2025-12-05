@@ -13,6 +13,7 @@ class GreenTiles
 {
     private:
         Board board;
+        Player player;
         vector<string> events;
         vector<string> greenTileDescriptions;
         vector<int> pathType;
@@ -21,7 +22,12 @@ class GreenTiles
     public:
         GreenTiles()
         {
+            player = Player();
             board = Board();
+        }
+        void nameGreenTiles(string name)
+        {
+            player.setName(name);
         }
         void displayGreenTiles()
         {
@@ -79,19 +85,20 @@ class GreenTiles
                 i++;
             }
         }
-        void triggerRandomEvent(int player_index, Player player)
+        void triggerRandomEvent()
         {
             int num = events.size();
+            
             //cout << events.size() << " " << greenTileDescriptions.size() << " " << pathType.size() << " " << advisor.size() << " " << points.size() << endl;
             int randomIndex = rand() % num;
             cout << "Random Event: " << greenTileDescriptions[randomIndex] << "," << advisor[randomIndex] << "," << pathType[randomIndex] << "," << points[randomIndex] << endl;
             if(points[randomIndex] < 0)
             {
-                cout << "Player " << player_index + 1 << " lost " << -points[randomIndex] << " experience points!" << endl;
+                cout << player.getName() << " lost " << -points[randomIndex] << " experience points!" << endl;
             }
             else
             {
-                cout << "Player " << player_index + 1 << " gained " << points[randomIndex] << " experience points!" << endl;
+                cout << player.getName() << " gained " << points[randomIndex] << " experience points!" << endl;
             }
             player.addExperiencePoints(points[randomIndex]);
         }
