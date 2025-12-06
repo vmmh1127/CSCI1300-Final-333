@@ -82,8 +82,6 @@ class GreenTiles
 
                 events.push_back(line);
 
-                //cout << events.size() << " " << greenTileDescriptions.size() << " " << pathType.size() << " " << advisor.size() << " " << points.size() << endl;
-
                 i++;
             }
         }

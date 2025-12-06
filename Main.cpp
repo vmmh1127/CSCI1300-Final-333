@@ -44,6 +44,7 @@ int main() {
     Board board = Board();
 
     DNA dna;
+    dna.setRandomRiddles("riddles.txt");
 
     int turn = 0;
     string strand1;
@@ -75,7 +76,7 @@ int main() {
 
         if(board.getTileColor(current) == 'R'){
             cout << "Red Tile! DNA Mutation Challenge Initiated!" << endl;
-            cout << "Enter original DNA strand and mutated DNA strand: " << endl;
+            cout << "Enter original DNA strand and mutated DNA strand: (contains letters a,c,t,g only)" << endl;
             cin >> strand1 >> strand2;
             dna.identifyMutations("ATCGTACGTA", "CGTACG");
             cin.clear();
@@ -84,7 +85,7 @@ int main() {
         }
         if(board.getTileColor(current) == 'P'){
             cout << "Pink Tile! DNA Alignment Challenge Initiated!" << endl;
-            cout << "Enter two DNA strands to find best alignment: " << endl;
+            cout << "Enter two DNA strands to find best alignment: (contains letters a,c,t,g only)" << endl;
             cin >> strand1 >> strand2;
             dna.bestStrandMatch(strand1, strand2);
             cin.clear();
@@ -93,7 +94,7 @@ int main() {
         }
         if(board.getTileColor(current) == 'T'){
             cout << "Brown Tile! Transcription Challenge Initiated!" << endl;
-            cout << "Enter a DNA strand to transcribe to RNA: " << endl;
+            cout << "Enter a DNA strand to transcribe to RNA: (contains letters a,c,t,g only)" << endl;
             cin >> strand1;
             string rna_strand = dna.transcribeToRNA(strand1);
             cout << "Transcribed RNA Strand: " << rna_strand << endl;
@@ -108,8 +109,31 @@ int main() {
         cout << "\n" << player1.getPlayerName() << "'s Experience Points: " << player1.getExperiencePoints() << endl;
         cout << player2.getPlayerName() << "'s Experience Points: " << player2.getExperiencePoints() << endl;
         turn++;
-        cout << "\n" << "===============================================================" << "\n" << endl;
+        cout << "\n" << "===========================================================================================================================" << "\n" << endl;
+    }
+    if (board.getPlayerPosition(0)==51){
+        cout<< player1.getPlayerName() << "; thou hast reached the end of the DNA Journey first "<<endl;
+    }
+    else
+    {
+        cout<< player2.getPlayerName() << "; thou hast reached the end of the DNA Journey first "<<endl;
     }
 
+    int finalPts1 = player1.getExperiencePoints()+ player1.getAccuracyPoints() + player1.getEfficiencyPoints() + player1.getInsightPoints() + player1.getDiscoverPoints();
+    int finalPts2 = player2.getExperiencePoints()+ player2.getAccuracyPoints() + player2.getEfficiencyPoints() + player2.getInsightPoints() + player2.getDiscoverPoints();
+
+    cout << player1.getPlayerName() << "'s Final Points: " << finalPts1 << endl;
+    cout << player2.getPlayerName() << "'s Final Points: " << finalPts2 << endl;
+    
+    if (finalPts1 > finalPts2){
+        cout << player1.getPlayerName() << " is the Ultimate DNA Master! Congratulations!" << endl;
+    }
+    else if (finalPts2 > finalPts1){
+        cout << player2.getPlayerName() << " is the Ultimate DNA Master! Congratulations!" << endl;
+    }
+    else {
+        cout << "It's a tie! Both you mutherfuqers are Ultimate DNA Masters! Congratulations!" << endl;
+    }
+    
     return 0;
 }
