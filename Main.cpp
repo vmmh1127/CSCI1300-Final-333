@@ -132,7 +132,7 @@ int main() {
         cout << player2.getPlayerName() << " is the Ultimate DNA Master! Congratulations!" << endl;
     }
     else {
-        cout << "It's a tie! Both you mutherfuqers are Ultimate DNA Masters! Congratulations!" << endl;
+        cout << "It's a tie! Both you are Ultimate DNA Masters! Congratulations!" << endl;
     }
     
     return 0;
