@@ -3,7 +3,7 @@
 #include <fstream>     
 using namespace std;
 #include "Player.h"
-
+//Partner Name: Vidita Mulik
 //our DNA sequencing feauture will consist of two strands
 
 //this function will also influence the players'stats

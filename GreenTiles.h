@@ -6,7 +6,7 @@
 #include <string>
 #include <sstream>
 #include <ctime>
-//#include "Tile.h"
+//Partner Name: Vidita Mulik
 using namespace std;
 
 class GreenTiles

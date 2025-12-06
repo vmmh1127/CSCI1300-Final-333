@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 using namespace std;
+//Partner Name: Vidita Mulik
 
 class StartPage
 {

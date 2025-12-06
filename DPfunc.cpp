@@ -1,7 +1,7 @@
 //has been converted 
 #include <iostream> 
 using namespace std;
-
+//Partner Name: Vidita Mulik
 /*15. When players reach orange tile - 
 1) calculate total DPs
 2) for every 100 in A, Ef, I > add 1000 DPs to the total DPs

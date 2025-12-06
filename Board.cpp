@@ -6,6 +6,7 @@
 #include <ctime>
 #include <iostream>
 #include <string>
+//Partner Name: Vidita Mulik
 
 // Each of the following defines a macro
 // Essentially nicenames to use instead of the corresponding escape sequence ('\') 

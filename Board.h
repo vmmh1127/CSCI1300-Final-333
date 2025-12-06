@@ -2,7 +2,7 @@
 // Prevent the board header file from being used more than once
 #ifndef BOARD_H
 #define BOARD_H
-
+//Partner Name: Vidita Mulik
 #include "Tile.h"
 
 class Board {

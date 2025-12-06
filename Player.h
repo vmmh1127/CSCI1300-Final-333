@@ -1,7 +1,7 @@
 #include <iostream>
 #pragma once
 using namespace std;
-
+//Partner Name: Vidita Mulik
 /*Player Class: Tracks players attributes, including Experience, Accuracy, Efficiency, 
 Insight, and Discover Points. Includes methods for adjusting these attributes based on 
 events. */

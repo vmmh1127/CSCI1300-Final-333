@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <iostream>
 using namespace std;
-
+//Partner Name: Vidita Mulik
 Player::Player(){
             experience_points = 0;
             accuracy_points = 0;

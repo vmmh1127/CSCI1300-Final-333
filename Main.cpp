@@ -5,6 +5,8 @@
 #include "GreenTiles.h"
 #include "DNA.h"
 
+//Partner Name: Vidita Mulik
+
 
 using namespace std;
 
