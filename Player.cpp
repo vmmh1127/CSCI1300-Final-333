@@ -52,9 +52,9 @@ Player::Player(){
         {
             return discover_points;
         }
-        string Player::getName()
+        string Player::getCharacterName()
         {
-            return name;
+            return characterName;
         }
         int Player::getPathChoice()
         {

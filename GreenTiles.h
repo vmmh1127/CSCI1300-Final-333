@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Board.h"
+//#include "Board.h"
 #include "Player.h"
 #include <vector>
 #include <fstream>
@@ -12,8 +12,9 @@ using namespace std;
 class GreenTiles
 {
     private:
-        Board board;
-        Player player;
+        //Board board;
+        //Player player;
+        string p;
         vector<string> events;
         vector<string> greenTileDescriptions;
         vector<int> pathType;
@@ -22,14 +23,15 @@ class GreenTiles
     public:
         GreenTiles()
         {
-            player = Player();
-            board = Board();
+            p = ":333333";
+            //player = Player();
+            //board = Board();
         }
-        void nameGreenTiles(string name)
+        /*void nameGreenTiles(Player p)
         {
-            player.setName(name);
-        }
-        void displayGreenTiles()
+            player.setName(p.getName());
+        }*/
+        /*void displayGreenTiles()
         {
             for (int i = 0; i < 52; i++) {
                 if (board.getPlayerPosition(0) == i || board.getPlayerPosition(1) == i) {
@@ -41,11 +43,11 @@ class GreenTiles
                     }
                 }
             }
-        }
-        void updateBoardAfterMove(int player_index)
+        }*/
+        /*void updateBoardAfterMove(int player_index)
         {
             board.movePlayer(player_index);
-        }
+        }*/
         void setRandomEvents(string filename)
         {
             ifstream file(filename);
@@ -85,21 +87,24 @@ class GreenTiles
                 i++;
             }
         }
-        void triggerRandomEvent()
+        Player triggerRandomEvent(Player pl)
         {
             int num = events.size();
             
             //cout << events.size() << " " << greenTileDescriptions.size() << " " << pathType.size() << " " << advisor.size() << " " << points.size() << endl;
             int randomIndex = rand() % num;
+            //player.setPlayerName(p.getPlayerName());
             cout << "Random Event: " << greenTileDescriptions[randomIndex] << "," << advisor[randomIndex] << "," << pathType[randomIndex] << "," << points[randomIndex] << endl;
             if(points[randomIndex] < 0)
             {
-                cout << player.getName() << " lost " << -points[randomIndex] << " experience points!" << endl;
+                cout << pl.getPlayerName() << " lost " << -points[randomIndex] << " experience points!" << endl;
             }
             else
             {
-                cout << player.getName() << " gained " << points[randomIndex] << " experience points!" << endl;
+                cout << pl.getPlayerName() << " gained " << points[randomIndex] << " experience points!" << endl;
             }
-            player.addExperiencePoints(points[randomIndex]);
+            pl.addExperiencePoints(points[randomIndex]);
+            //player = p;
+            return pl;
         }
 };

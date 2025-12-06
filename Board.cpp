@@ -146,7 +146,7 @@ void Board::displayBoard() {
     }
 }
 
-bool Board::movePlayer(int player_index) {
+/*bool Board::movePlayer(int player_index) {
     // Increment player position by 1
    // _player_position[player_index]++;
     //instead have random dice generator 
@@ -160,6 +160,19 @@ bool Board::movePlayer(int player_index) {
     }
 
     return false;
+}*/
+
+
+bool Board::movePlayer(int player_index) {
+    int dice = (rand() % 6) + 1;
+    _player_position[player_index] += dice;
+
+    // Prevent going past the last tile
+    if (_player_position[player_index] >= _BOARD_SIZE) {
+        _player_position[player_index] = _BOARD_SIZE - 1;
+    }
+
+    return (_player_position[player_index] == _BOARD_SIZE - 1);
 }
 
 int Board::getPlayerPosition(int player_index) const {

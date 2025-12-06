@@ -8,7 +8,7 @@ events. */
 
 class Player {
     private:
-        string name;
+        string characterName;
         string playerName;
         int experience_points;
         int accuracy_points;
@@ -20,6 +20,9 @@ class Player {
     public:
         // Constructor to initialize player stats
         Player();
+        Player(string pn){
+            playerName = pn;
+        }
 
         //TO DO: constructor or function for player to choose character
         //cout to choose 
@@ -33,29 +36,45 @@ class Player {
         void addEfficiencyPoints(int points);
         void addInsightPoints(int points);
         void addDiscoverPoints(int points);
-        void setName(string playerName) {
-            name = playerName;
+        
+        void setCharacterName(string n)
+        {
+            characterName = n;
         }
-        void setExperience(int exp) {
+        int setExperience(int exp)
+        {
             experience_points = exp;
+            return experience_points;
         }
-        void setAccuracy(int acc) {
+        int setAccuracy(int acc) 
+        {
             accuracy_points = acc;
+            return accuracy_points;
         }
-        void setEfficiency(int eff) {
+        int setEfficiency(int eff) 
+        {
             efficiency_points = eff;
+            return efficiency_points;
         }
-        void setInsight(int ins) {
+        int setInsight(int ins) 
+        {
             insight_points = ins;
+            return insight_points;
         }
-        void setDiscoverPoints(int disc) {
+        int setDiscoverPoints(int disc) 
+        {
             discover_points = disc;
+            return discover_points;
         }
-        void setPathChoice(int choice) {
+        int setPathChoice(int choice)
+        {
             pathChoice = choice;
+            return pathChoice;
         }
-        void setPlayerName(string pName) {
-            playerName = pName;
+        string setPlayerName(string n) 
+        {
+            playerName = n;
+            return playerName;
         }
 
         // Methods to get current stats
@@ -64,7 +83,7 @@ class Player {
         int getEfficiencyPoints();
         int getInsightPoints();
         int getDiscoverPoints();
-        string getName();
+        string getCharacterName();
         int getPathChoice();
         string getPlayerName();
 };

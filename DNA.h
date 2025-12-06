@@ -17,6 +17,7 @@ class DNA
 {
     private:
     int l;
+    vector<string> riddle; //fix later
     public:
     void generate_two_strands(int l, int s)
     {
@@ -191,7 +192,7 @@ class DNA
     //============================Purple function=======================================================
     //as the player lands on purple tile, they encounter a riddle related to programming.
 
-    void presentRiddleToPlayer(int player_index){
+    void presentRiddleToPlayer(){
         //when player lands on purple tile, this function is called
         cout << "You have landed on a Purple Tile! Solve the following riddle to earn 500 insight points." << endl;
         ifstream riddle_file("riddles.txt");
